@@ -1,0 +1,19 @@
+.header {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-nav-toggle {
+    background: transparent;
+    border: none;
+}
+
+.nav {
+    display: none;
+}
+
+/* about us */
+
+.about {
+    
+}
