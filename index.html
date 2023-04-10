@@ -34,17 +34,28 @@
     <section class="bg-secondary container">
         <h1 class="text-primary"> Saving the planet one time at a time by checking the cost of houses.</h1>
         <p> Our application provides informaitin on the cost living in different cities </p>
+        <div>
+            <label for="region">Choose a Region :</label>
 
-        <label for="pet-select">Choose a Region :</label>
+            <select name="region" id="select-region">
+            </select>
+        </div>
+        <div>
+            <label for="countries">Choose country </label>
+            <select name="countries" id="select-country">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="cities">Choose City </label>
 
-        <select name="pets" id="select-region">
-            <option value="">--Please choose an option--</option>
-            <option value="africa">Africa</option>
-            <option value="asia">Asia</option>
-            <option value="europe">Europe</option>
-            <option value="america">America</option>
-            <option value="oceania">Oceania</option>
-        </select>
+            <select name="cities" id="select-city">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <button class="btn btn-secondary" id="search-city"> Submit </button>
+        
     </section>
     <section class="container">
         <div>

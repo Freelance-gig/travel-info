@@ -1,19 +1,21 @@
 import countryJson from '../data.json' assert {type: 'json'};
-// https://rapidapi.com/richardarthur228/api/country-facts/ 
-// https://rapidapi.com/traveltables/api/cost-of-living-and-prices/ 
-const navBtn = document.querySelector('.mobile-nav-toggle')
+import cityJson from '../cities_data.json' assert {type: 'json'};
+
+const navBtn = document.querySelector('.mobile-nav-toggle');
 const nav = document.querySelector('.nav');
 const closeBtn = document.querySelector('.close-nav');
-const africaContainer = document.querySelector('.africa-container')
-const asiaContainer = document.querySelector('.asia-container')
-const europeContainer = document.querySelector('.europe-container')
-const oceaniaContainer = document.querySelector('.oceania-container')
-const americaContainer = document.querySelector('.america-container')
-const selectRegion = document.querySelector('#select-region')
+const africaContainer = document.querySelector('.africa-container');
+const asiaContainer = document.querySelector('.asia-container');
+const europeContainer = document.querySelector('.europe-container');
+const oceaniaContainer = document.querySelector('.oceania-container');
+const americaContainer = document.querySelector('.america-container');
+const selectRegion = document.querySelector('#select-region');
+const selectCountry = document.querySelector('#select-country');
+const selectCity = document.querySelector('#select-city');
+const searchCity = document.querySelector('#search-city')
 const countryFactsUrl = 'https://country-facts.p.rapidapi.com'
 const localStore = localStorage.getItem("countryFacts")
 
-console.log(selectRegion)
 navBtn.addEventListener('click', ()=>{
     nav.classList.add('nav-open');
 })
@@ -73,6 +75,35 @@ const renderCountryFacts = (container, data) => {
         `
     });     
 }
+
+const getRegions = (data) => {
+    return Object.keys(data)
+}
+
+const getCountries = (region) => {
+    return countryJson[region]
+}
+
+const getCountryCities = (country) => {
+    return cityJson.cities.filter((element) => element.country_name === country  )
+}
+
+const renderSelectOptions = (data, selectContainer) => {
+    selectContainer.innerText = null;
+    let option = document.createElement('option');
+    option.setAttribute('value', "")
+    let optionText = document.createTextNode('--Please choose an option--');
+    option.appendChild(optionText);
+    selectContainer.appendChild(option);
+
+    data.forEach((element) => {
+        let option = document.createElement('option');
+        option.setAttribute('value', element)
+        let optionText = document.createTextNode(element);
+        option.appendChild(optionText);
+        selectContainer.appendChild(option);
+    })
+}
 {/* <div>
 <h2> Africa </h2>
 <div  class="africa-container country__container">
@@ -80,10 +111,40 @@ const renderCountryFacts = (container, data) => {
 </div>
 <button class="btn btn-secondary"> More </button>
 </div> */}
-renderCountryFacts(africaContainer, countryJson.africa)
 // renderCountryFacts(asiaContainer, countryJson.asia)
 // renderCountryFacts(europeContainer, countryJson.europe)
 // renderCountryFacts(oceaniaContainer, countryJson.oceania)
 // renderCountryFacts(americaContainer, countryJson.america)
+const regionList = getRegions(countryJson)
 
 
+renderCountryFacts(africaContainer, countryJson.africa)
+renderSelectOptions(regionList, selectRegion);
+
+let countryList = [];
+let cityList = [];
+let regionValue= '';
+let countryValue ='';
+let cityValue = '';
+
+selectRegion.addEventListener('change', () => {
+    regionValue = selectRegion.value;
+    countryList = getCountries(regionValue).map((element) => element.name.common)
+    renderSelectOptions(countryList, selectCountry)
+})
+
+selectCountry.addEventListener('change', () => {
+    countryValue = selectCountry.value;
+    cityList = getCountryCities(countryValue).map((element) => element.city_name)
+    renderSelectOptions(cityList, selectCity)
+})
+
+selectCity.addEventListener('change', () => {
+    cityValue = selectCity.value;
+    console.log(cityValue.split(" ").join("_"))
+})
+
+searchCity.addEventListener('click', () =>{
+    console.log(cityValue)
+    window.location.href = `./detail-country.html?city_name=${cityValue.split(" ").join("_")}&country_name=${countryValue.split(" ").join("_")}`;
+})
