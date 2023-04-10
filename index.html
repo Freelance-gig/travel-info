@@ -35,19 +35,30 @@
         <h1 class="text-primary"> Saving the planet one time at a time by checking the cost of houses.</h1>
         <p> Our application provides informaitin on the cost living in different cities </p>
 
-        <button> Select city </button>
+        <label for="pet-select">Choose a Region :</label>
+
+        <select name="pets" id="select-region">
+            <option value="">--Please choose an option--</option>
+            <option value="africa">Africa</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="america">America</option>
+            <option value="oceania">Oceania</option>
+        </select>
     </section>
     <section class="container">
-        <!-- <div className="card__container">
-            <img src={logo} alt="team-logo" className='card__logo'/>
-            <img src='./icon/left.svg' className="card__icon" alt="left-icon" />
-            <div className="card__data">
-                <h2> {name} </h2>
+        <div>
+            <h2> Africa </h2>
+            <div  class="africa-container country__container">
+                
             </div>
-        </div> -->
+            <button class="btn btn-secondary"> More </button>
+        </div>
+
     </section>
 
-    <script src="./assets/js/main.js" defer> </script>
+
+    <script type="module" src="./assets/js/main.js" defer> </script>
 </body>
 </body>
 
