@@ -13,68 +13,104 @@
     <header class="header flex container">
         <div>
             <a href="./index.html">            
-            <span> Home pae</span>
+            <span> Home page</span>
             </a>
         </div>
         <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span>
             <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="181D0F"><path d="M150 816q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T150 756h660q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T810 816H150Zm0-210q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T150 546h660q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T810 606H150Zm0-210q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T150 336h660q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T810 396H150Z"/></svg>
         </button>
         <nav class="nav">
-            <ul id="primary-navigation" data-visible="false" class="primary-navigation flex">
-                <li> <a href="./" class=""> Home </a></li>
-                <li> <a href="./about-us.html" class=""> About Us </a></li>
+            <button class="close-nav">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="white"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+            </button>
+            <ul class="nav-container">
+                <li> <a href="./" class="nav-link"> Home </a></li>
+                <li> <a href="./about-us.html" class="nav-link"> About Us </a></li>
             </ul>
         </nav>
     </header>
-    <section class="about"> 
+    <section class="about m3 container flow"> 
         <h2> Our works in numbers. </h2>
         <p> See the postive impact of our softwares in numbers. Learn about the resources saved and the reduction in enviromental impact achieved by our clients</p>
-        <div>
-            <span>
-                50
-            </span>
-            <span>
-                Services provided during last 10 yeat
-            </span>
-        </div>
-    </section>
-
-    <section class="profile">
-        <h2> Who are we </h2> 
-
-        <p> We are group of enthuasitc team that helps individuals get the cost of living in different countries </p>
-
-        <div>
-            <div>
-                <h3> Meet Victoria Friday </h3>
-                <div class="developer-pic">
-                    <img src="./assets/imgs/developer-pic.jpg"/>
-                </div>
-                <p> 
-                    She is Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, ullam. Dolorum doloribus eos at nihil vel maiores aspernatur quasi, et, laudantium esse nam modi tempore corporis! Est excepturi laudantium consequatur?
-                </p>
+        <div class="about-info-container">
+            <div class="about-info bg-secondary text-white">
+                <span>
+                    50
+                </span>
+                <span>
+                    Services provided during last 10 yeat
+                </span>
+            </div>
+            <div class="about-info bg-secondary text-white">
+                <span>
+                    50
+                </span>
+                <span>
+                    Services provided during last 10 yeat
+                </span>
+            </div>
+            <div class="about-info bg-secondary text-white">
+                <span>
+                    50
+                </span>
+                <span>
+                    Services provided during last 10 yeat
+                </span>
             </div>
         </div>
     </section>
-    <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true" class="about-form">
-        <div class="form-control">
-            <input type="hidden" name="form-name" value="contact">
+
+    <section class="profile m3 container flow">
+        <h2> Who are we </h2> 
+        <p> We are group of enthuasitc team that helps individuals get the cost of living in different countries </p>
+        <div class="flow">
+            <h3> Meet Victoria Friday </h3>
+            <div class="profile-pic">
+            </div>
+            <p class="bg-light profile-info"> 
+                She is Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, ullam. Dolorum doloribus eos at nihil vel maiores aspernatur quasi, et, laudantium esse nam modi tempore corporis! Est excepturi laudantium consequatur?
+            </p>
         </div>
-        <div class="hidden">
-            <label for=""></label>
-            <input name="bot-field">
+    
+    </section>
+    <section class="container mg-3 bg-primary text-dark about-container">
+        <div>
+            <h3> Contact Us. </h3>
+
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate neque similique sit, numquam quas saepe molestiae veritatis accusamus, animi amet rem ullam consequatur. Iusto amet accusamus in, maiores est distinctio!
+            </p>
         </div>
-        <div class="form-control">
-            <input type="text" name="name" placeholder="Name" required>
-        </div>
-        <div class="form-control">
-            <input type="text" name="company" placeholder="Company Name" required>
-        </div>                
-        <div class="form-control">
-            <input type="email" name="email" placeholder="Email" required>
-        </div>
-        <input type="submit" value="Send" class="btn btn-primary"> 
-    </form>
+
+        <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true" class="about-form flow">
+            <!-- <div class="form-control">
+                <input type="hidden" name="form-name" value="contact">
+            </div>
+            <div class="hidden">
+                <label for=""></label>
+                <input name="bot-field">
+            </div> -->
+            <label class="sr-only" for="name"> Name </label>
+            <input class="about-form__input" type="text" name="name" placeholder="Your name" required>
+            <label class="sr-only" for="email">Email</label>
+            <input class="about-form__input" type="text" name="email" placeholder="Your email" required>
+                <label class="sr-only" for="description">Message</label>
+                <textarea
+                  class="about-form__textarea"
+                  name="description"
+                  id="description"
+                  
+                  rows="10"
+                  maxlength="500"
+                  placeholder="Enter text here"
+                  required
+                ></textarea>
+
+                <button type="submit" value="Send" class="btn btn-secondary"> Submit </button>
+
+        </form>
+    </section>
+    <script src="./assets/js/main.js" defer> </script>
 
 </body>
 </html>

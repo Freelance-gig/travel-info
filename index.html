@@ -14,19 +14,20 @@
 <body>
     <header class="header flex container">
         <div>
-            <a href="./index.html">
-
-            
-            <span> Home pae</span>
+            <a href="./index.html">            
+            <span> Home page</span>
             </a>
         </div>
         <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span>
             <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="181D0F"><path d="M150 816q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T150 756h660q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T810 816H150Zm0-210q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T150 546h660q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T810 606H150Zm0-210q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T150 336h660q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T810 396H150Z"/></svg>
         </button>
         <nav class="nav">
-            <ul id="primary-navigation" data-visible="false" class="primary-navigation flex">
-                <li> <a href="./" class=""> Home </a></li>
-                <li> <a href="./about-us.html" class=""> About Us </a></li>
+            <button class="close-nav">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="white"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+            </button>
+            <ul class="nav-container">
+                <li> <a href="./" class="nav-link"> Home </a></li>
+                <li> <a href="./about-us.html" class="nav-link"> About Us </a></li>
             </ul>
         </nav>
     </header>
@@ -37,10 +38,13 @@
         <button> Select city </button>
     </section>
     <section class="container">
-        <div> show cost of living and information about the place </div>
-        <div>
-            show map
-        </div>
+        <!-- <div className="card__container">
+            <img src={logo} alt="team-logo" className='card__logo'/>
+            <img src='./icon/left.svg' className="card__icon" alt="left-icon" />
+            <div className="card__data">
+                <h2> {name} </h2>
+            </div>
+        </div> -->
     </section>
 
     <script src="./assets/js/main.js" defer> </script>

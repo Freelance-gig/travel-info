@@ -5,7 +5,8 @@
      
     --clr-primary: 86, 100%, 64%;
     --clr-secondary: 81, 32%, 9%;
-    --clr-light: 231 77% 90%;
+    --clr-light: 0, 0%, 96%;
+    --clr-dark: 0 0% 0%;
     --clr-white: 0 0% 100%;
 
     /* font-sizes*/
@@ -21,7 +22,9 @@
     /*font-families*/
     --ff-serif: "Bellefair", serif;
     --ff-space: "Space Grotesk", sans-serif;
-    --ff-roboto: 'Roboto', sans-serif;;
+    --ff-roboto: 'Roboto', sans-serif;
+
+    --border-radius: 1rem;
 }
 
 /* Utility Classes */
@@ -68,6 +71,17 @@
     line-height: 1.1;
 }
 
+.m3 {
+    margin-block: 3rem;
+}
+
+.m2 {
+    margin-block: 2rem;
+}
+
+.m1 {
+    margin-block: 1rem;
+}
 
 .flex {
     display: flex;
@@ -87,8 +101,8 @@
 }
 
 .container {
-    padding-inline: 2em;
-    /* margin-inline: auto; */
+    /* padding-inline: 2em; */
+    margin-inline: 2em;
     /* max-width: 60rem; */
 }
 
