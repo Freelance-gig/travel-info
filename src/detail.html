@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/utility.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <title>travelloure</title>
+</head>
+<body>
+    <header class="header flex container">
+        <div>
+            <a href="./index.html">            
+            <div>
+                <span> </span> Home page</div>
+            <span> </span>
+            </a>
+        </div>
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="181D0F"><path d="M150 816q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T150 756h660q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T810 816H150Zm0-210q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T150 546h660q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T810 606H150Zm0-210q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T150 336h660q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T810 396H150Z"/></svg>
+        </button>
+        <nav class="nav">
+            <button class="close-nav">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="white"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+            </button>
+            <ul class="nav-container">
+                <li> <a href="./" class="nav-link"> Home </a></li>
+                <li> <a href="./about-us.html?" class="nav-link"> About Us </a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container detail-container">
+        <div class="detail-info">
+
+        </div>
+        <div class="detail-map m1">
+        </div>
+
+        <div class="detail-chart m1"><canvas id="acquisitions"></canvas></div>
+    
+    </main>
+    <script type="module" src="./assets/js/detail.js" defer> </script>
+</body>
+</html>

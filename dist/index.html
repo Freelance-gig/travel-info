@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/utility.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link rel="stylesheet" href="/assets/css/utility.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
     <title>travelloure</title>
-</head>
+<script defer src="index.js"></script></head>
+
 <body>
     <header class="header flex container">
         <div>
@@ -25,11 +27,50 @@
             </button>
             <ul class="nav-container">
                 <li> <a href="./" class="nav-link"> Home </a></li>
-                <li> <a href="./about-us.html?" class="nav-link"> About Us </a></li>
+                <li> <a href="./about.html" class="nav-link"> About Us </a></li>
             </ul>
         </nav>
     </header>
+    <section class="bg-secondary container home_container">
+        <h1> Saving the planet one time at a time by checking the cost of houses.</h1>
+        <p> Our application provides informaitin on the cost living in different cities </p>
+        <div>
+            <label for="region">Choose a Region :</label>
 
-    <script type="module" src="./assets/js/detail.js" defer> </script>
+            <select name="region" id="select-region">
+            </select>
+        </div>
+        <div>
+            <label for="countries">Choose country </label>
+            <select name="countries" id="select-country">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="cities">Choose City </label>
+
+            <select name="cities" id="select-city">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" id="search-city"> Submit </button>
+        
+    </section>
+    <section class="container">
+        <div>
+            <h2> Africa </h2>
+            <div  class="africa-container country__container">
+                
+            </div>
+            <button class="btn btn-secondary"> More </button>
+        </div>
+
+    </section>
+
+
+    <script type="module" src="./assets/js/index.js" defer> </script>
 </body>
+</body>
+
 </html>

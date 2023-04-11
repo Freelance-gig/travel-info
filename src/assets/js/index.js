@@ -1,3 +1,7 @@
+import '../css/reset.css';
+import '../css/utility.css';
+import '../css/main.css';
+
 import countryJson from '../data.json' assert {type: 'json'};
 import cityJson from '../cities_data.json' assert {type: 'json'};
 
@@ -126,7 +130,7 @@ let cityList = [];
 let regionValue= '';
 let countryValue ='';
 let cityValue = '';
-
+let city = {};
 selectRegion.addEventListener('change', () => {
     regionValue = selectRegion.value;
     countryList = getCountries(regionValue).map((element) => element.name.common)
@@ -141,10 +145,10 @@ selectCountry.addEventListener('change', () => {
 
 selectCity.addEventListener('change', () => {
     cityValue = selectCity.value;
-    console.log(cityValue.split(" ").join("_"))
+    [city] = getCountryCities(countryValue).filter((element) => element.city_name === cityValue)
+    console.log(city)
 })
 
 searchCity.addEventListener('click', () =>{
-    console.log(cityValue)
-    window.location.href = `./detail-country.html?city_name=${cityValue.split(" ").join("_")}&country_name=${countryValue.split(" ").join("_")}`;
+    window.location.href = `./detail.html?city_name=${cityValue.split(" ").join("_")}&country_name=${countryValue.split(" ").join("_")}&lat=${city.lat}&lng=${city.lng}`;
 })
