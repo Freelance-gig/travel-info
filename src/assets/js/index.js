@@ -8,15 +8,13 @@ import cityJson from '../cities_data.json' assert {type: 'json'};
 const navBtn = document.querySelector('.mobile-nav-toggle');
 const nav = document.querySelector('.nav');
 const closeBtn = document.querySelector('.close-nav');
-const africaContainer = document.querySelector('.africa-container');
-const asiaContainer = document.querySelector('.asia-container');
-const europeContainer = document.querySelector('.europe-container');
-const oceaniaContainer = document.querySelector('.oceania-container');
-const americaContainer = document.querySelector('.america-container');
 const selectRegion = document.querySelector('#select-region');
 const selectCountry = document.querySelector('#select-country');
 const selectCity = document.querySelector('#select-city');
-const searchCity = document.querySelector('#search-city')
+const searchCity = document.querySelector('#search-city');
+const moreBtn = document.querySelector('.btn-more');
+const tabContainer = document.querySelector('.tab-container');
+const tabList = document.querySelectorAll('ul.nav-tabs > li')
 const countryFactsUrl = 'https://country-facts.p.rapidapi.com'
 const localStore = localStorage.getItem("countryFacts")
 
@@ -36,8 +34,6 @@ async function fetchData(url) {
     const jsonData = await response.json();
     return jsonData
 }
-
-
 
 // const africanCountries = fetchData(`${countryFactsUrl}/region/africa`)
 // console.log(africanCountries)
@@ -63,19 +59,62 @@ async function fetchData(url) {
 //     }
 //     setLocalStorage()
 // }
+const getSiblings = (e) => {
+    let siblings = [];
+    if (!e.parentNode) {
+        return siblings
+    }
+    let sibling = e.parentNode.firstElementChild;
+    while (sibling) {
+        if (sibling.nodeType === 1 && sibling !== e) {
+            siblings.push(sibling)
+        }
+        sibling = sibling.nextElementSibling
+    }
+    return siblings
+}
+
+moreBtn.addEventListener('click', (e) => {
+    let btn = e.currentTarget
+    console.log(btn.dataset.clicked);
+    btn.dataset.clicked = !(btn.dataset.clicked === 'true')
+    if (btn.dataset.clicked === 'true') {
+        let div = document.createElement("div");
+        let text = document.createTextNode('--Please choose an option--');
+        div.appendChild(text);
+        btn.parentNode.prepend(div)
+    }    
+})
 
 const renderCountryFacts = (container, data) => {
-    data.slice(0, 4).forEach(element => {
+    container.innerHTML = ''
+    data.slice(0, 4).forEach((element) => {
         container.innerHTML += `
-        <div class="card__container">
-            <img src=${element.flag} alt="team-logo" class='card__flag'/>
-            
-            <div class="card__data">
-                <h2> ${element.name.official} </h2>
-                <span> capital ${element.capital[0]} </span>
-                <span> population ${element.population} </span>
-            </div>
-        </div> 
+        <a href="./detail.html?city_name=${element.capital[0].split(" ").join("_")}&country_name=${element.name.official.split(" ").join("_")}&lat=${element.latlng[0]}&lng=${element.latlng[1]}">
+            <div class="card__container">
+                <div class="flex">
+                    <img src=${element.flag} alt="team-logo" class='card__flag'/>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+                        <path d="m480 722 146-146-146-146-42 42 74 74H330v60h182l-74 74 42 42Zm0 254q-82 0-155-31.5t-127.5-86Q143 804 111.5 731T80 576q0-83 31.5-156t86-127Q252 239 325 207.5T480 176q83 0 156 31.5T763 293q54 54 85.5 127T880 576q0 82-31.5 155T763 858.5q-54 54.5-127 86T480 976Zm0-60q142 0 241-99.5T820 576q0-142-99-241t-241-99q-141 0-240.5 99T140 576q0 141 99.5 240.5T480 916Zm0-340Z"/>
+                    </svg>
+                </div>
+                <div class="card__data">
+                <span class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+                        <path d="m438 615 192-192-43-43-149 149-65-65-43 43 108 108Zm42 282q133-121 196.5-219.5T740 504q0-118-75.5-193T480 236q-109 0-184.5 75T220 504q0 75 65 173.5T480 897Zm0 79Q319 839 239.5 721.5T160 504q0-150 96.5-239T480 176q127 0 223.5 89T800 504q0 100-79.5 217.5T480 976Zm0-472Z"/>
+                    </svg>
+                    <h2> ${element.capital[0]}, </h2>
+                    <h3> ${element.name.official} </h3>
+                </span>
+                    <span class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+                        <path d="M0 816v-53q0-38.567 41.5-62.784Q83 676 150.376 676q12.165 0 23.395.5Q185 677 196 678.652q-8 17.348-12 35.165T180 751v65H0Zm240 0v-65q0-32 17.5-58.5T307 646q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-19.861-3.5-37.431Q773 696 765 678.727q11-1.727 22.171-2.227 11.172-.5 22.829-.5 67.5 0 108.75 23.768T960 763v53H780Zm-480-60h360v-6q0-37-50.5-60.5T480 666q-79 0-129.5 23.5T300 751v5ZM149.567 646Q121 646 100.5 625.438 80 604.875 80 576q0-29 20.562-49.5Q121.125 506 150 506q29 0 49.5 20.5t20.5 49.933Q220 605 199.5 625.5T149.567 646Zm660 0Q781 646 760.5 625.438 740 604.875 740 576q0-29 20.562-49.5Q781.125 506 810 506q29 0 49.5 20.5t20.5 49.933Q880 605 859.5 625.5T809.567 646ZM480 576q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600 456q0 50-34.5 85T480 576Zm.351-60Q506 516 523 498.649t17-43Q540 430 522.851 413t-42.5-17Q455 396 437.5 413.149t-17.5 42.5Q420 481 437.351 498.5t43 17.5ZM480 756Zm0-300Z"/>
+                    </svg>
+                        <h3> ${element.population} </h3> <span> People </span>
+                    </span>
+                </div>
+            </div> 
+        </a>
         `
     });     
 }
@@ -108,29 +147,25 @@ const renderSelectOptions = (data, selectContainer) => {
         selectContainer.appendChild(option);
     })
 }
-{/* <div>
-<h2> Africa </h2>
-<div  class="africa-container country__container">
-    
-</div>
-<button class="btn btn-secondary"> More </button>
-</div> */}
-// renderCountryFacts(asiaContainer, countryJson.asia)
-// renderCountryFacts(europeContainer, countryJson.europe)
-// renderCountryFacts(oceaniaContainer, countryJson.oceania)
-// renderCountryFacts(americaContainer, countryJson.america)
+
+const tabClick  = (e) => {
+    let clickedTab = e.currentTarget;
+    let siblings = getSiblings(clickedTab);
+    siblings.forEach((element) => element.classList.remove("active"));
+    clickedTab.classList.add("active");
+    e.preventDefault();
+    renderCountryFacts(tabContainer, countryJson[clickedTab.dataset.name])
+};
+
 const regionList = getRegions(countryJson)
-
-
-renderCountryFacts(africaContainer, countryJson.africa)
 renderSelectOptions(regionList, selectRegion);
-
 let countryList = [];
 let cityList = [];
 let regionValue= '';
 let countryValue ='';
 let cityValue = '';
 let city = {};
+
 selectRegion.addEventListener('change', () => {
     regionValue = selectRegion.value;
     countryList = getCountries(regionValue).map((element) => element.name.common)
@@ -146,9 +181,17 @@ selectCountry.addEventListener('change', () => {
 selectCity.addEventListener('change', () => {
     cityValue = selectCity.value;
     [city] = getCountryCities(countryValue).filter((element) => element.city_name === cityValue)
-    console.log(city)
 })
 
 searchCity.addEventListener('click', () =>{
     window.location.href = `./detail.html?city_name=${cityValue.split(" ").join("_")}&country_name=${countryValue.split(" ").join("_")}&lat=${city.lat}&lng=${city.lng}`;
+})
+
+const [currentTab] = Array.from(tabList).filter((tab) => {
+    return tab.classList.contains("active")
+})
+
+renderCountryFacts(tabContainer, countryJson[currentTab.dataset.name])
+Array.from(tabList).forEach((tab) => {
+    tab.addEventListener("click", tabClick)
 })
