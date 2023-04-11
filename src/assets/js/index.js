@@ -18,13 +18,13 @@ const tabList = document.querySelectorAll('ul.nav-tabs > li')
 const countryFactsUrl = 'https://country-facts.p.rapidapi.com'
 const localStore = localStorage.getItem("countryFacts")
 
-navBtn.addEventListener('click', ()=>{
-    nav.classList.add('nav-open');
-})
+// navBtn.addEventListener('click', ()=>{
+//     nav.classList.add('nav-open');
+// })
 
-closeBtn.addEventListener('click', () => {
-    nav.classList.remove('nav-open');
-})
+// closeBtn.addEventListener('click', () => {
+//     nav.classList.remove('nav-open');
+// })
 
 async function fetchData(url) {
     const response = await fetch(url, {

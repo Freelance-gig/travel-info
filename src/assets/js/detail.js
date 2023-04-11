@@ -15,13 +15,13 @@ const countryName = urlParams.get('country_name')
 const cityLat = urlParams.get('lat')
 const cityLng = urlParams.get('lng')
 
-navBtn.addEventListener('click', ()=>{
-  nav.classList.add('nav-open');
-})
+// navBtn.addEventListener('click', ()=>{
+//   nav.classList.add('nav-open');
+// })
 
-closeBtn.addEventListener('click', () => {
-  nav.classList.remove('nav-open');
-})
+// closeBtn.addEventListener('click', () => {
+//   nav.classList.remove('nav-open');
+// })
 
 
 async function fetchData(url) {
