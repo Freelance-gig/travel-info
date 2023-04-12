@@ -13,13 +13,6 @@ module.exports = () => {
             return config;
           }, {}),
           resolve: {
-        //     fallback: [ {
-        //         "name" : "os",
-        //         "alias": require.resolve("os-browserify/browser") },
-        //         { "name" : "path",
-        //             "alias": require.resolve("path-browserify") }
-        // ]
-
         fallback: {
             "fs": false,
             "os": false,
@@ -37,14 +30,10 @@ module.exports = () => {
                     chunks: [page],
                 })
             ),
-        new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin({
+            analyzerMode: "disabled"
+        }),
         new Dotenv(),
-        // new EnvironmentPlugin({
-        //     COUNTRY_RAPID_KEY:"xx",
-        //     COUNTRY_RAPID_HOST:"xx",
-        //     COST_RAPID_KEY: "xx",
-        //     COST_RAPID_HOST: "xx"
-        // })
         ),      
         output: {
             filename: '[name].js',
@@ -67,6 +56,6 @@ module.exports = () => {
         static: './dist',
         port: 9000
     },
-    mode: 'development'
+    mode: 'production'
     }
 }
