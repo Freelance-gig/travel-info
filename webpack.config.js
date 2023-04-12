@@ -1,15 +1,32 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const { EnvironmentPlugin } = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const Dotenv = require('dotenv-webpack');
 const pages = ['index', 'detail', 'about']
-module.exports = (env) => {
-    console.log('COSt_key', env.RAPID_KEY); 
-    console.log('Cost_host', env.COST_RAPID_HOST);  
+// require("dotenv").config
+module.exports = () => {
+
     return {
         entry: pages.reduce((config, page) => {
             config[page] = `./src/assets/js/${page}.js`;
             return config;
           }, {}),
+          resolve: {
+        //     fallback: [ {
+        //         "name" : "os",
+        //         "alias": require.resolve("os-browserify/browser") },
+        //         { "name" : "path",
+        //             "alias": require.resolve("path-browserify") }
+        // ]
+
+        fallback: {
+            "fs": false,
+            "os": false,
+            "path": false
+          },
+          },
+
         plugins :[].concat(
             pages.map(
                 (page) =>
@@ -19,9 +36,15 @@ module.exports = (env) => {
                     filename: `${page}.html`,
                     chunks: [page],
                 })
-            )
-            ,
+            ),
         new BundleAnalyzerPlugin(),
+        new Dotenv(),
+        // new EnvironmentPlugin({
+        //     COUNTRY_RAPID_KEY:"xx",
+        //     COUNTRY_RAPID_HOST:"xx",
+        //     COST_RAPID_KEY: "xx",
+        //     COST_RAPID_HOST: "xx"
+        // })
         ),      
         output: {
             filename: '[name].js',

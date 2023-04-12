@@ -3,7 +3,6 @@ import '../css/utility.css';
 import '../css/main.css';
 import Chart from 'chart.js/auto';
 import pricesJson from '../prices_data.json' assert {type: 'json'};
-
 const navBtn = document.querySelector('.mobile-nav-toggle');
 const nav = document.querySelector('.nav');
 const closeBtn = document.querySelector('.close-nav');
@@ -15,27 +14,20 @@ const countryName = urlParams.get('country_name')
 const cityLat = urlParams.get('lat')
 const cityLng = urlParams.get('lng')
 
-// navBtn.addEventListener('click', ()=>{
-//   nav.classList.add('nav-open');
-// })
-
-// closeBtn.addEventListener('click', () => {
-//   nav.classList.remove('nav-open');
-// })
-
 
 async function fetchData(url) {
     const response = await fetch(url, {
         headers: {
-            
+          "X-RapidAPI-Key": process.env.COUNTRY_RAPID_KEY,
+          "X-RapidAPI-Host": process.env.COUNTRY_RAPID_KEY
         }
     });
     const jsonData = await response.json();
     return jsonData
 }
-const cityPricesUrl = `https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityName}&country_name=${countryName}`
-// const cityPrices = fetchData(`${cityPricesUrl}`)
-// console.log(cityPrices);
+const cityPricesUrl = `https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityName}&country_name=${countryName}`;
+const cityRapidKey = process.env.COST_RAPID_KEY;
+const cityRapiHost = process.env.COST_RAPID_HOST;
 
 console.log('hey');
 (async function() {
