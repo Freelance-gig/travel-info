@@ -191,6 +191,7 @@ searchCity.addEventListener('click', () =>{
 })
 
 const [currentTab] = Array.from(tabList).filter((tab) => {
+    console.log(tab.dataset.name)
     return tab.classList.contains("active")
 })
 
